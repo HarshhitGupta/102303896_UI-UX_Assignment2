@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Tours & Travels | Booking Form</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function validateForm() {
+      const name = document.forms["bookingForm"]["name"].value;
+      const startDate = document.forms["bookingForm"]["startDate"].value;
+      const endDate = document.forms["bookingForm"]["endDate"].value;
+      if (name.trim() === "") {
+        alert("Please enter your name.");
+        return false;
+      }
+      if (!startDate || !endDate) {
+        alert("Please select both start and end dates.");
+        return false;
+      }
+      if (endDate < startDate) {
+        alert("End date must be after start date.");
+        return false;
+      }
+      alert("Thanks for the submission")
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="images/tiet-logo.png">
+    <h1>My Tours & Travels</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="packages.html">Packages</a>
+      <a href="booking.html">Booking</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2 style="background-color:#ffeeee;box-shadow: 0 2px 6px rgba(0,0,0,0.15)"><span style="padding:5px;">Book Your Tour</span></h2>
+    <form name="bookingForm" onsubmit="return validateForm()" method="post" action="#">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate" required />
+
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" name="endDate" required />
+
+      <label for="destination">Destination:</label>
+      <select id="destination" name="destination" required>
+        <option value="">--Select Destination--</option>
+        <option value="Paris">Paris, France</option>
+        <option value="Bali">Bali, Indonesia</option>
+        <option value="Tokyo">Tokyo, Japan</option>
+        <option value="New York">New York, USA</option>
+      </select>
+
+      <label for="package">Package:</label>
+      <select id="package" name="package" required>
+        <option value="">--Select Package--</option>
+        <option value="Standard">Standard</option>
+        <option value="Deluxe">Deluxe</option>
+        <option value="Luxury">Luxury</option>
+      </select>
+      <div style="display: flex;">        
+        <section style="flex:1;">
+          <button type="submit">Submit Booking</button>
+        </section>
+        
+      </div>
+    </form>
+  </main>
+  <footer>&copy My Tours & Travels 2025</footer>
+</body>
+</html>
